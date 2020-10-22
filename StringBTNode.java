@@ -87,7 +87,7 @@ public class StringBTNode {
   
   public void print() { print(""); }
   private void print(String prefix) {
-    System.out.println(prefix + value);
+    System.out.println(prefix + toString());
     prefix = prefix.replace('\u251C', '\u2502');
     prefix = prefix.replace('\u2514', ' ');
     if(left != null) left.print(prefix + "\u251C ");

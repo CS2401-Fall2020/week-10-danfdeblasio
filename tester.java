@@ -2,40 +2,64 @@
 public class tester {
 
   public static void main(String[] args) {
-    StringBTNode root1 = new StringBTNode("1");
-    assert(root1.depth("1")==0);
-    assert(root1.search("1")!=null);
-    assert(root1.height()==0);
-    assert(root1.depth("0")==-1);
-    assert(root1.search("0")==null);
-    //root1.print();
+    StringBTNode intTree = new StringBTNode("1");
+    assert(intTree.depth("1")==0);
+    assert(intTree.search("1")!=null);
+    assert(intTree.height()==0);
+    assert(intTree.depth("0")==-1);
+    assert(intTree.search("0")==null);
     for(int i=1;i<16;i++) {
       if(i!=1) {
-        assert(root1.depth(String.valueOf(i))==-1);
-        assert(root1.search(String.valueOf(i))==null);
+        assert(intTree.depth(String.valueOf(i))==-1);
+        assert(intTree.search(String.valueOf(i))==null);
       }
-      root1.insert(String.valueOf(i));
-      //assert(root1.depth(String.valueOf(i))==0);
-      assert(root1.search(String.valueOf(i))!=null);
-      assert(root1.height()==root1.depth(String.valueOf(i)));
-      //root1.print();
+      intTree.insert(String.valueOf(i));
+      assert(intTree.search(String.valueOf(i))!=null);
+      assert(intTree.height()==intTree.depth(String.valueOf(i)));
+      assert(intTree.numNodes()==i);
+      
     }
+    intTree.print();
     
-    StringBTNode root2 = new StringBTNode("a");
-    assert(root2.depth("a")==0);
-    assert(root2.search("a")!=null);
-    assert(root2.height()==0);
-    assert(root2.depth("A")==-1);
-    assert(root2.search("A")==null);
-    for(char i='a';i<'o';i++) {
+    StringBTNode charTree = new StringBTNode("a");
+    assert(charTree.depth("a")==0);
+    assert(charTree.search("a")!=null);
+    assert(charTree.height()==0);
+    assert(charTree.depth("A")==-1);
+    assert(charTree.search("A")==null);
+    for(char i='a';i<='o';i++) {
       if(i!='a') {
-        assert(root2.depth(String.valueOf(i))==-1);
-        assert(root2.search(String.valueOf(i))==null);
+        assert(charTree.depth(String.valueOf(i))==-1);
+        assert(charTree.search(String.valueOf(i))==null);
       }
-      root2.insert(String.valueOf(i));
-      assert(root2.search(String.valueOf(i))!=null);
-      assert(root2.height()==root2.depth(String.valueOf(i)));
+      charTree.insert(String.valueOf(i));
+      assert(charTree.search(String.valueOf(i))!=null);
+      assert(charTree.height()==charTree.depth(String.valueOf(i)));
+      assert(charTree.numNodes()== (i-(int)'a'+1) );
     }
+    charTree.print();
+    
+    StringBTNode fakeBST = new StringBTNode("H");
+    fakeBST.insert("D");
+    fakeBST.insert("L");
+    fakeBST.insert("B");
+    fakeBST.insert("J");
+    fakeBST.insert("F");
+    fakeBST.insert("N");
+    fakeBST.insert("A");
+    fakeBST.insert("I");
+    fakeBST.insert("E");
+    fakeBST.insert("M");
+    fakeBST.insert("C");
+    fakeBST.insert("K");
+    fakeBST.insert("G");
+    fakeBST.insert("O");
+    assert(fakeBST.height()==3);
+    assert(fakeBST.depth("A")==3);
+    assert(fakeBST.depth("B")==2);
+    assert(fakeBST.depth("D")==1);
+    fakeBST.print();
+    
     System.out.println("All Assertion Tests Passed");
 
   }
